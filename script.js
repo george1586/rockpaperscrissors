@@ -1,32 +1,38 @@
+
 function computer() {
     const nr = Math.random();
     if (nr < 1 / 3) return 1;
     else if (nr >= 1 / 3 && nr <= 2 / 3) return 2;
     else return 3;
 }
+
+function choose()
+{
+   document.querySelector("#rock").addEventListener("click",function(){human("rock")});
+   document.querySelector("#paper").addEventListener("click",function(){human("paper")});
+   document.querySelector("#scrissors").addEventListener("click",function(){human("scrissors")});
+}
 let scoreh = 0, scorec = 0;
-function human() {
-    let choice = prompt("Rock Paper Or Scrissors? ");
-    choice = choice.toLowerCase();
+function human(choice) {
     const nr = computer();
-    if (choice == "rock" && nr == 1) alert("It was a tie!"), scoreh++, scorec++;
-    if (choice == "paper" && nr == 2) alert("It was a tie!"), scoreh++, scorec++;
-    if (choice == "scrissors" && nr == 3) alert("It was a tie!"), scoreh++, scorec++;
-    if (choice == "rock" && nr == 2) alert("You lost!"), scorec++;
-    if (choice == "paper" && nr == 1) alert("You won!"), scoreh++;
-    if (choice == "scrissors" && nr == 1) alert("You lost!"), scorec++;
-    if (choice == "rock" && nr == 3) alert("You won!"), scoreh++;
-    if (choice == "paper" && nr == 3) alert("You lost!"), scorec++;
-    if (choice == "scrissors" && nr == 2) alert("You won!"), scoreh++;
+    const res=document.querySelector("#status");
+    if (choice == "rock" && nr == 1) scoreh++, scorec++, res.innerText="It was a tie! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "paper" && nr == 2)scoreh++, scorec++, res.innerText="It was a tie! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "scrissors" && nr == 3) scoreh++, scorec++,res.innerText="It was a tie! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "rock" && nr == 2) scorec++,res.innerText="You lost! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "paper" && nr == 1)scoreh++, res.innerText="You won! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "scrissors" && nr == 1)scorec++,res.innerText="You lost! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "rock" && nr == 3) scoreh++,res.innerText="You won! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "paper" && nr == 3)scorec++, res.innerText="You lost! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+    if (choice == "scrissors" && nr == 2)scoreh++, res.innerText="You won! Score is: "+scoreh+" for you and "+scorec+ " for the computer!";
+
+    document.querySelector("#reset").addEventListener("click", function () {
+        const reset = document.querySelector("#reset");
+        res.innerText = "Take your first choice";
+        scoreh = 0;
+        scorec = 0;
+    });
 }
 
-function playgame() {
-    for (var i = 1; i <= 5; i++)
-    {
-        alert("You have " + scoreh + " points " + " The computer has " + scorec + " points")
-        human();
-    }
-    if (scorec > scoreh) alert("The computer has won!");
-    else alert("You have won!");
-}
-console.log(playgame());
+
+choose();

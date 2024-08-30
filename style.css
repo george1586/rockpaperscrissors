@@ -1,0 +1,61 @@
+html
+{
+    width:100%;
+    height:100%;
+}
+body
+{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    gap:60px;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+#text
+{
+    font-size:50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#choice
+{
+    display:flex;
+    gap:40px;
+}
+
+#rock
+{
+    background:url("img/rock.png");
+    width:250px;
+    height:250px;
+}
+
+#paper
+{
+    background:url("img/paper.png");
+    width:250px;
+    height:250px;
+}
+
+#scrissors
+{
+    background:url("img/scrissors.png");
+    width:250px;
+    height:250px;
+}
+
+#status
+{
+    font-size:40px;
+}
+
+#reset
+{
+    background:url("img/reset.png");
+    background-size:cover;
+    width:100px;
+    height:100px;
+}
